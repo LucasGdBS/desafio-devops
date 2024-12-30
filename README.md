@@ -27,3 +27,14 @@ Para executar a aplicação com o Docker, siga os passos abaixo:
 - Execute o comando `docker-compose up` para iniciar a aplicação.
 
 Depois basta acessar a URL `http://localhost:8000/docs` para visualizar a documentação da API e testar os endpoints.
+
+## Github Actions
+
+A pipeline de deploy foi criada utilizando o Github Actions. A pipeline é acionada a cada push na branch `main` e executa os seguintes passos:
+
+- Puxa a versão mais recente da imagem do docker CLI e a usa como um contêiner base.
+- Passa as credenciais do Railway e executa o comando railway up para fazer o deploy da aplicação.
+
+A aplicaçao e o banco de dados são hospedados no Railway, um serviço de hospedagem de aplicativos que permite fazer o deploy de aplicativos de forma simples e rápida.
+
+Pode ser acessado em: [https://desafio.up.railway.app/docs](https://desafio.up.railway.app/docs)

@@ -1,5 +1,6 @@
 # Desafio DevOps
 
+
 ## Descrição
 
 O desafio consiste em criar uma pipeline de deploy automatizada para uma aplicação. A aplicação é uma API REST que realiza um CRUD de filmes. A aplicação foi desenvolvida em Python utilizando o framework FastAPI.

@@ -15,11 +15,8 @@ jobs:
       - name: Code Checkout
         uses: actions/checkout@v3
 
-      - name: Link Project to Railway
-        run: railway link --token=${{ secrets.RAILWAY_TOKEN }}
-
       - name: Set DATABASE_URL in Railway
-        run: railway variables --set DATABASE_URL=teste
+        run: railway variables --service=${{ env.SVC_ID }} --set DATABASE_URL=teste
       
       - uses: actions/checkout@v3
-      - run: railway up
+      - run: railway up --service=${{ env.SVC_ID }}

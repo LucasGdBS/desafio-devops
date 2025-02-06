@@ -2,7 +2,7 @@ name: Deploy to Railway
 
 on:
   push:
-    branches: [main]
+    branches: [main, testes]
 
 jobs:
   deploy:
@@ -12,5 +12,14 @@ jobs:
       SVC_ID: 14ffd80e-83a2-4c4d-a43d-8a72b61f8974
       RAILWAY_TOKEN: ${{ secrets.RAILWAY_TOKEN }}
     steps:
+      - name: Code Checkout
+        uses: actions/checkout@v3
+
+      - name: Link Project to Railway
+        run: railway link --token=${{ secrets.RAILWAY_TOKEN }}
+
+      - name: Set DATABASE_URL in Railway
+        run: railway variables --set DATABASE_URL=teste
+      
       - uses: actions/checkout@v3
-      - run: railway up --service=${{ env.SVC_ID }}
+      - run: railway up

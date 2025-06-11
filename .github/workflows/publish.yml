@@ -69,4 +69,4 @@ jobs:
       RAILWAY_TOKEN: ${{ secrets.RAILWAY_TOKEN }}
     steps:
       - name: Redeploy
-        run: railway redeploy --service=${{ env.SVC_ID }}
+        run: railway redeploy --service=${{ env.SVC_ID }} --yes

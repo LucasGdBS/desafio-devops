@@ -58,3 +58,15 @@ jobs:
           subject-name: index.docker.io/lucasgdbs/devops-challenge
           subject-digest: ${{ steps.push.outputs.digest }}
           push-to-registry: true
+
+  deploy_to_railway:
+    needs: push_to_registry
+    name: Update railway image container
+    runs-on: ubuntu-latest
+    container: ghcr.io/railwayapp/cli:latest
+    env: 
+      SVC_ID: 3883c2ae-df29-4bfb-9b6f-c7f9282f4a6c
+      RAILWAY_TOKEN: ${{ secrets.RAILWAY_TOKEN }}
+    steps:
+      - name: Redeploy
+        run: railway redeploy --service=${{ env.SVC_ID }}

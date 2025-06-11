@@ -4,7 +4,12 @@ from app.routes import filme_route
 from app.config.db import lifespan
 
 
-app = FastAPI(lifespan=lifespan)
+app = FastAPI(
+    lifespan=lifespan,
+    title="CRUD FILMES"
+)
+
+
 
 app.add_middleware(
     CORSMiddleware,

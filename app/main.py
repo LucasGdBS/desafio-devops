@@ -6,7 +6,8 @@ from app.config.db import lifespan
 
 app = FastAPI(
     lifespan=lifespan,
-    title="CRUD FILMES"
+    title="CRUD FILMES",
+    openapi_url="/filmes.json"
 )
 
 
